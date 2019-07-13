@@ -1,0 +1,59 @@
+---
+
+resources:
+  - name: repo-gradle-chrome
+    type: git
+    icon: github-circle
+    source:
+      uri: https://github.com/bookwalker/ci-images.git
+      branch: master
+
+  - name: repo-node-chrome
+    type: git
+    icon: github-circle
+    source:
+      uri: https://github.com/bookwalker/ci-images.git
+      branch: master
+
+  - name: registry-gradle-chrome
+    type: docker-image
+    icon: docker
+    source:
+      repository: bookwalker/gradle-chrome
+      username: ((registry-username))
+      password: ((registry-password))
+
+  - name: registry-node-chrome
+    type: docker-image
+    icon: docker
+    source:
+      repository: bookwalker/node-chrome
+      username: ((registry-username))
+      password: ((registry-password))
+
+
+
+jobs:
+  - name: build-gradle-image
+    public: true
+    plan:
+      - get: repo
+        resource: repo-gradle-chrome
+      - put: registry-gradle-chrome
+        timeout: 60m
+        params:
+          build: repo/
+          dockerfile: repo/gradle-chrome/Dockerfile
+          additional_tags: repo/gradle-chrome/version
+
+  - name: build-node-image
+    public: true
+    plan:
+      - get: repo
+        resource: repo-node-chrome
+      - put: registry-node-chrome
+        timeout: 60m
+        params:
+          build: repo/
+          dockerfile: repo/node-chrome/Dockerfile
+          additional_tags: repo/node-chrome/version
