@@ -5,6 +5,7 @@ USER root
 RUN apt-get update && \
     apt-get -y install curl && \
     apt-get -y install gnupg && \
+    apt-get -y install rsync && \
     apt-get -y install git
 
 # install chrome headless
