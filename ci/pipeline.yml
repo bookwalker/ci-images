@@ -45,6 +45,8 @@ jobs:
           build: repo/
           dockerfile: repo/gradle-chrome/Dockerfile
           additional_tags: repo/gradle-chrome/version
+        get_params:
+          skip_download: true
 
   - name: build-node-image
     public: true
@@ -57,3 +59,5 @@ jobs:
           build: repo/
           dockerfile: repo/node-chrome/Dockerfile
           additional_tags: repo/node-chrome/version
+        get_params:
+          skip_download: true
