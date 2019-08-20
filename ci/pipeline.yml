@@ -32,6 +32,14 @@ resources:
       username: ((registry-username))
       password: ((registry-password))
 
+  - name: registry-ubuntu-ruby
+    type: docker-image
+    icon: docker
+    source:
+      repository: bookwalker/ubuntu-ruby
+      username: ((registry-username))
+      password: ((registry-password))
+
 
 
 
@@ -72,5 +80,18 @@ jobs:
           build: repo/
           dockerfile: repo/ubuntu-ci/Dockerfile
           additional_tags: repo/ubuntu-ci/version
+        get_params:
+          skip_download: true
+
+  - name: build-ubuntu-ruby-image
+    public: true
+    plan:
+      - get: repo
+      - put: registry-ubuntu-ruby
+        timeout: 60m
+        params:
+          build: repo/
+          dockerfile: repo/ubuntu-ruby/Dockerfile
+          additional_tags: repo/ubuntu-ruby/version
         get_params:
           skip_download: true
