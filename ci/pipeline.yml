@@ -3,7 +3,7 @@
 resources:
   - name: repo
     type: git
-    icon: github-circle
+    icon: github
     source:
       uri: https://github.com/bookwalker/ci-images.git
       branch: master
