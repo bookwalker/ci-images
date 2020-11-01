@@ -48,6 +48,7 @@ jobs:
     public: true
     plan:
       - get: repo
+        trigger: true
       - put: registry-gradle-chrome
         timeout: 60m
         params:
@@ -61,6 +62,7 @@ jobs:
     public: true
     plan:
       - get: repo
+        trigger: true
       - put: registry-node-chrome
         timeout: 60m
         params:
@@ -74,6 +76,7 @@ jobs:
     public: true
     plan:
       - get: repo
+        trigger: true
       - put: registry-ubuntu-ci
         timeout: 60m
         params:
@@ -87,6 +90,7 @@ jobs:
     public: true
     plan:
       - get: repo
+        trigger: true
       - put: registry-ubuntu-ruby
         timeout: 60m
         params:
