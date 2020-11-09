@@ -4,6 +4,7 @@ resources:
   - name: repo
     type: git
     icon: github
+    check_every: 15m
     source:
       uri: https://github.com/bookwalker/ci-images.git
       branch: master
@@ -11,34 +12,38 @@ resources:
   - name: registry-gradle-chrome
     type: docker-image
     icon: docker
+    check_every: 360m
     source:
       repository: bookwalker/gradle-chrome
-      username: ((registry-username))
-      password: ((registry-password))
+      username: ((docker.username))
+      password: ((docker.password))
 
   - name: registry-node-chrome
     type: docker-image
     icon: docker
+    check_every: 360m
     source:
       repository: bookwalker/node-chrome
-      username: ((registry-username))
-      password: ((registry-password))
+      username: ((docker.username))
+      password: ((docker.password))
 
   - name: registry-ubuntu-ci
     type: docker-image
     icon: docker
+    check_every: 360m
     source:
       repository: bookwalker/ubuntu-ci
-      username: ((registry-username))
-      password: ((registry-password))
+      username: ((docker.username))
+      password: ((docker.password))
 
   - name: registry-ubuntu-ruby
     type: docker-image
     icon: docker
+    check_every: 360m
     source:
       repository: bookwalker/ubuntu-ruby
-      username: ((registry-username))
-      password: ((registry-password))
+      username: ((docker.username))
+      password: ((docker.password))
 
 
 
